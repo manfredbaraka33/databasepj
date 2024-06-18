@@ -1,0 +1,29 @@
+{% extends 'hostelMS/studentDbBase.html' %}
+{%load static%}
+{%block content%}
+
+<div class="bg-light p-4 ">
+    <form action="{% url 'hostelMS:issue' %}" method="post" class="border rounded p-3" style="background-color: white;box-shadow:3px 3px 3px black">
+        {% csrf_token %}
+        <div class="mb-3">
+            <h4 class="text-primary ">Report Maintainance Issue</h4>
+            <input type="number" class="form-control" placeholder="Enter room number" name="room_number" required> <br>
+            <label for="title" class="form-label">Title</label>
+            <select class="form-control" id="title" name="title">
+                <option selected disabled>Select the issue</option>
+                <option value="Furniture">Furniture</option>
+                <option value="Tubelights">Tubelights</option>
+                <option value="Others">Others</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Issue description</label>
+            <textarea name="description" class="form-control" cols="50" rows="4" placeholder="Enter your issue description here"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Report Issue</button>
+    </form>
+
+</div>
+
+
+{%endblock%}
